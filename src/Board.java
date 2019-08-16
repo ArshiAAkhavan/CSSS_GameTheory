@@ -28,9 +28,9 @@ public class Board {
         this.colProbability = colProbability;
     }
     public void setRowChoose(int decision){
-        this.rowProbability=(decision==0)? -1 : 1;
+        this.rowProbability=(decision==0)? 1 : -1;
     }
     public void setColChoose(int decision){
-        this.colProbability=(decision==0)? -1 : 1;
+        this.colProbability=(decision==0)? 1 : -1;
     }
 }
