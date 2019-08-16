@@ -13,13 +13,14 @@ public class Board {
         this.table = table;
     }
 
-    public int play(){
+    public Cell play(){
         Random random=new Random();
         int row=(random.nextFloat()<=rowProbability)? 0 : 1;
         int col=(random.nextFloat()<= colProbability)? 0 : 1;
 
-        return table[row][col];
+        return new Cell(row,col,table[row][col]);
     }
+
 
     public void setRowProbability(float rowProbability) {
         this.rowProbability = rowProbability;
