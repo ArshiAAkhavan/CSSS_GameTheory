@@ -1,9 +1,7 @@
-package Menu;
-
-import Menu.Menu;
 
 public class MenuHandler {
     private static Menu currentMenu;
+    private static Account enemy;
 
     public static void main(String[] args) {
 
