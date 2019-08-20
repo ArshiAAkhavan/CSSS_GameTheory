@@ -3,10 +3,8 @@ package Controller.menu;
 import Controller.Global;
 import Model.Table.Cell;
 import Model.Table.Game;
-import Model.account.Account;
 import Model.account.player.Player;
 import Model.mediator.NormalModeMediator;
-import Model.mediator.OnlineNormalModeMediator;
 
 import java.util.ArrayList;
 
@@ -66,7 +64,7 @@ public class NormalModeMenu extends Menu implements Playable {
     }
 
     @Override
-    public int[][] play(){
+    public float[][] play(){
         this.mediator.play();
         if(turn==0) {
             endTurn();
@@ -87,14 +85,16 @@ public class NormalModeMenu extends Menu implements Playable {
         /*
         * preparing the return table
         * */
-        int[][] retVal=new int[2][2];
+        float[][] retVal=new float[2][2];
         ArrayList<Cell> results = this.game.getResults();
         for (Cell result : results) {
             retVal[result.getX()][result.getY()]++;
         }
         for(int i=0;i<2;i++){
             for(int j=0;j<2;j++){
+                System.out.println("i,j,value:"+i+" "+j+" "+retVal[i][j]);
                 retVal[i][j]/=(ROUNDS*1.0f);
+                System.out.println("i,j,value:"+i+" "+j+" "+retVal[i][j]);
             }
         }
         this.setScore(retVal);
@@ -107,11 +107,11 @@ public class NormalModeMenu extends Menu implements Playable {
         return retVal;
     }
 
-    private void setScore(int[][] retVal) {
+    private void setScore(float[][] retVal) {
         for(int i=0;i<2;i++){
             for(int j=0;j<2;j++){
-                this.player[0].addScore(retVal[i][j]*table[i][j]);
-                this.player[1].addScore(-retVal[i][j]*table[i][j]);
+                this.player[0].addScore((int) (retVal[i][j]*table[i][j]));
+                this.player[1].addScore((int) (-retVal[i][j]*table[i][j]));
             }
         }
     }

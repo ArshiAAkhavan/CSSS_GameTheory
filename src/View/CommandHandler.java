@@ -48,7 +48,7 @@ public class CommandHandler {
         }else if(word[0].equals("end") && word[1].equals("turn")){
             menu.endTurn();
         }else if(word[0].equals("play")){
-            int[][] results = menu.play();
+            float[][] results = menu.play();
             for(int i=0;i<2;i++){
                 for(int j=0;j<2;j++){
                     System.out.print(results[i][j]+" ");

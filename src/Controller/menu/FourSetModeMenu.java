@@ -26,8 +26,8 @@ public class FourSetModeMenu extends Menu implements Playable {
     }
 
     @Override
-    public int[][] play() {
-        return new int[0][];
+    public float[][] play() {
+        return new float[0][];
     }
 
     @Override
