@@ -56,7 +56,8 @@ public class MenuHandler {
         SignInMenu.getMenu().setSignInMenuMediator(new OnlineSignInMenuMediator());
         MultiPlayerModeMenu.getMenu().setMediator(new OnlineMultiPlayerMenuMediator());
         Battle.getMenu().setMediator(new OnlineBattleMediator());
-        NormalModeMenu.getMenu().setMediator(new OnlineNormalModeMediator());
+        NormalModeMenu.getMenu().setMediator(new OnlinePlayableMediator());
+        FourSetModeMenu.getMenu().setMediator(new OnlinePlayableMediator());
 
 
     }

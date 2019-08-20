@@ -5,7 +5,7 @@ import Controller.menu.NormalModeMenu;
 import Model.account.player.OnlinePlayer;
 import network.Message;
 
-public class OnlineNormalModeMediator implements NormalModeMediator {
+public class OnlinePlayableMediator implements PlayableMediator {
     @Override
     public void setProbability(int... probability) {
         if(NormalModeMenu.getMenu().getAccount().getPlayer() instanceof OnlinePlayer) return;

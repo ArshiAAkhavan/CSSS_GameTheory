@@ -29,6 +29,7 @@ public class ChooseBattleModeMenu extends Menu {
                 MenuHandler.setGameMode(NormalModeMenu.getMenu());
                 break;
             case 2:
+
                 MenuHandler.setGameMode(FourSetModeMenu.getMenu());
                 break;
             default:

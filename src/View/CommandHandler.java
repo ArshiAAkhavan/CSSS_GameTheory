@@ -32,11 +32,35 @@ public class CommandHandler {
                 MultiPlayerMenuCommandHandler(word);
             }else if(MenuHandler.getCurrentMenu() instanceof NormalModeMenu){
                 NormalModeMenuCommandHandler(word);
+            }else if(MenuHandler.getCurrentMenu() instanceof FourSetModeMenu){
+                FourSetModeMenuCommandHandler(word);
             }
         }
         catch (Exception e){
             System.err.println("exceptions accrued while running");
             e.printStackTrace();
+        }
+    }
+
+    private void FourSetModeMenuCommandHandler(String[] word) {
+        FourSetModeMenu menu= (FourSetModeMenu) MenuHandler.getCurrentMenu();
+        if(word[0].equals("set")){
+            int[] temp=new int[word.length-2];
+            for(int i=2;i<word.length;i++){
+                temp[i-2]=Integer.parseInt(word[i]);
+            }
+            menu.setProbability( temp);
+        }else if(word[0].equals("end") && word[1].equals("turn")){
+            menu.endTurn();
+        }else if(word[0].equals("play")){
+            float[][] results = menu.play();
+            for(int i=0;i<2;i++){
+                for(int j=0;j<2;j++){
+                    System.out.print(results[i][j]+" ");
+                }
+                System.out.println();
+            }
+            System.out.println();
         }
     }
 

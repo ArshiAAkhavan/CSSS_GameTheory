@@ -14,7 +14,7 @@ public class Account {
 
     private static final Account defaultAccount = new Account("Duelyst","SAF","Pass the fucking word");
     private static int unique = 0;
-    private static final int INITIAL_MONEY = 99999999;
+    private static final int INITIAL_MONEY = 0;
 
     private static AccountMediator mediator;
 

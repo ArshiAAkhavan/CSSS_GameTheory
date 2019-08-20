@@ -4,7 +4,7 @@ import Controller.Global;
 import Model.Table.Cell;
 import Model.Table.Game;
 import Model.account.player.Player;
-import Model.mediator.NormalModeMediator;
+import Model.mediator.PlayableMediator;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class NormalModeMenu extends Menu implements Playable {
         return menu;
     }
 
-    private NormalModeMediator mediator;
+    private PlayableMediator mediator;
 
     private static final int ROUNDS = 1000;
 
@@ -110,8 +110,8 @@ public class NormalModeMenu extends Menu implements Playable {
     private void setScore(float[][] retVal) {
         for(int i=0;i<2;i++){
             for(int j=0;j<2;j++){
-                this.player[0].addScore((int) (retVal[i][j]*table[i][j]));
-                this.player[1].addScore((int) (-retVal[i][j]*table[i][j]));
+                this.player[0].addScore((int) (retVal[i][j]*table[i][j])*100);
+                this.player[1].addScore((int) (-retVal[i][j]*table[i][j])*100);
             }
         }
     }
@@ -126,7 +126,7 @@ public class NormalModeMenu extends Menu implements Playable {
 
     }
 
-    public void setMediator(NormalModeMediator mediator) {
+    public void setMediator(PlayableMediator mediator) {
         this.mediator=mediator;
     }
 
