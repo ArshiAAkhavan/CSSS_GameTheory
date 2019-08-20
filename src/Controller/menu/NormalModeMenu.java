@@ -40,7 +40,7 @@ public class NormalModeMenu extends Menu implements Playable {
         move=new int[2];
 
         player=new Player[2];
-        System.err.println("debug");
+
         setPlayer(Global.getAccount(0).getPlayer(), Global.getAccount(1).getPlayer());
 
         boolean isOk=super.init(parentMenu);
@@ -59,12 +59,17 @@ public class NormalModeMenu extends Menu implements Playable {
     public void endTurn(){
         this.mediator.endTurn();
         turn=(turn+1)%2;
+        this.account=this.player[this.turn].getUser();
+        this.getGraphic().getController().updateScene();
     }
 
     @Override
     public int[][] play(){
         this.mediator.play();
-        if(turn==1) endTurn();
+        if(turn==0) {
+            endTurn();
+            return null;
+        }
 
         /*
         * initializing the game
@@ -91,6 +96,12 @@ public class NormalModeMenu extends Menu implements Playable {
             }
         }
         this.setScore(retVal);
+        try {
+            this.getGraphic().getController().updateScene();
+        }catch (Exception ignored){
+            System.err.println("graphic error___________________________________");
+            ignored.printStackTrace();
+        }
         return retVal;
     }
 
@@ -120,5 +131,13 @@ public class NormalModeMenu extends Menu implements Playable {
     @Override
     public int getTurn() {
         return turn;
+    }
+
+    public int[][] getTable() {
+        return table;
+    }
+
+    public Player getPlayer(int i) {
+        return player[i%2];
     }
 }

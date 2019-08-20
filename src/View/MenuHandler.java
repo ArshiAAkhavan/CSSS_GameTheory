@@ -34,8 +34,8 @@ public class MenuHandler {
         initMenus();
 
 
-        View input = new ConsoleView();
-//        View input = new GraphicView();
+//        View input = new ConsoleView();
+        View input = new GraphicView();
 
         input.play(args);
     }
@@ -84,7 +84,7 @@ public class MenuHandler {
         MenuHandler.currentMenu.showMenu();
     }
     public static void nextMove() {
-        System.err.println("debug");
+
         Global.getAccount((MenuHandler.gameMode).getTurn()).getPlayer().getGI().intervene();
         try {
             currentMenu.getGraphic().getController().updateScene();
@@ -109,8 +109,9 @@ public class MenuHandler {
     }
 
     private static void initMenus() {
-        SignInMenu.getMenu().addSubMenu(ChooseBattleModeMenu.getMenu());
         currentMenu = SignInMenu.getMenu();
+        SignInMenu.getMenu().addSubMenu(ChooseBattleModeMenu.getMenu());
+
     }
 
     public static void setCurrentMenu(Menu currentMenu) {

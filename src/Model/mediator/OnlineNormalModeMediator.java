@@ -9,7 +9,7 @@ public class OnlineNormalModeMediator implements NormalModeMediator {
     @Override
     public void setProbability(int... probability) {
         if(NormalModeMenu.getMenu().getAccount().getPlayer() instanceof OnlinePlayer) return;
-        sendPlayerMove("set probability",probability);
+        sendPlayerMove("set probability"+ " "+string(probability));
     }
 
     @Override
@@ -23,14 +23,19 @@ public class OnlineNormalModeMediator implements NormalModeMediator {
         if(NormalModeMenu.getMenu().getAccount().getPlayer() instanceof OnlinePlayer) return;
         sendPlayerMove("play");
     }
-    private void sendPlayerMove(String playerMove, Object carry) {
+
+    private void sendPlayerMove(String playerMove) {
         Message message = new Message("playerMove");
         message.addCarry(playerMove);
-        message.addCarry(carry);
         System.out.println("message.getText() = " + message.getCarry().get(0));
         Global.getBattleClient().write(message);
     }
-    private void sendPlayerMove(String playerMove) {
-        sendPlayerMove(playerMove,null);
+
+    private String string(int[] probability) {
+        StringBuilder retVal=new StringBuilder();
+        for(int i=0;i<probability.length;i++){
+            retVal.append(probability[i]+" ");
+        }
+        return retVal.toString();
     }
 }

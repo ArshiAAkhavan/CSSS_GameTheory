@@ -37,7 +37,7 @@ public class SignInMenu extends Menu {
     }
 
     public void creatAccount(String name, String username, String password) throws AccountAlreadyExistsException, InvalidAccountException, WrongPassException {
-        System.err.println("debug");
+
         if(!Account.addNewAccount(new Account(name, username, password)))return;
             logIn(username , password);
 }
@@ -51,7 +51,7 @@ public class SignInMenu extends Menu {
             e.printStackTrace();
             return;
         }
-        System.err.println("debug");
+
         MenuHandler.enterMenu(SignInMenu.getMenu().enter(ChooseBattleModeMenu.getMenu()));
     }
 

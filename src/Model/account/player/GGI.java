@@ -3,11 +3,10 @@ package Model.account.player;
 
 public class GGI implements GameInterFace {
     private Player player;
-
     @Override
     public void intervene() {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (Exception e) {
             e.printStackTrace();
         }

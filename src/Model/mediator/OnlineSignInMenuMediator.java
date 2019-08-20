@@ -17,7 +17,7 @@ public class OnlineSignInMenuMediator implements SignInMenuMediator {
         Global.getClient().write(message);
 
         message= Global.getClient().read();
-        System.err.println("debug");
+
         if(!NetworkMediator.isValid(message))throw new Exception();
 
         System.out.println("message.getCarry().get(0) = " + message.getCarry().get(0));

@@ -13,7 +13,7 @@ public class CGI implements GameInterFace {
         System.err.println("Console GI");
         this.player.doYourMove();
         while(!this.player.getInputStream().hasNextLine()){}
-        System.err.println("debug");
+
         String command=this.player.getInputStream().nextLine();
         System.err.println("command:===================================="+command);
         commandHandler.handleCommand(command);

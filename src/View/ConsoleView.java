@@ -17,7 +17,7 @@ public class ConsoleView implements View{
             System.err.println("give me");
  //           MenuHandler.showMenu();
             MenuHandler.nextMove();
-            System.err.println("debug");
+
         }
 
     }

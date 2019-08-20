@@ -31,17 +31,18 @@ public class OnlineMultiPlayerMenuMediator implements MultiPlayerMenuMediator {
     @Override
     public void selectUser(String username, String password) throws InvalidAccountException, WrongPassException, IOException {
         /*username and password are ignored*/
-        System.err.println("debug");
-//        connectionThread=new Thread(() -> {
+
+        connectionThread=new Thread(() -> {
             try {
                 Global.getBattleClient().connect();
+
                 MenuHandler.enterMenu((Menu) MenuHandler.getGameMode());
             } catch (Exception e) {
                 e.printStackTrace();
             }
-//        });
-//        connectionThread.start();
-        System.err.println("debug");
+        });
+        connectionThread.start();
+
     }
 
     @Override

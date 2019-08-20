@@ -1,161 +1,56 @@
 package Controller.menu.Graphics.FXMLController;
 
-import Controller.menu.Graphics.GraphicsControls;
 import Controller.menu.SignInMenu;
-import exeption.AccountAlreadyExistsException;
 import exeption.InvalidAccountException;
 import exeption.WrongPassException;
-import javafx.fxml.FXML;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
+import javafx.animation.FadeTransition;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
-import javafx.scene.text.Font;
+import javafx.util.Duration;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Paths;
+public class SignInMenuFXMLC extends FXMLController {
 
-public class SignInMenuFXMLC extends FXMLController{
-
-
-    @FXML
-    private AnchorPane pane;
-    @FXML
-    private TextField usernameInput;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private Button signInButton;
-    @FXML
-    private Button signUpButton;
-    @FXML
-    private VBox frame;
-    @FXML
-    private Button showLeaderBoard ;
-
-    private TextField nameInput;
-    private MediaPlayer mediaPlayer ;
-
+    public TextField userNameField;
+    public PasswordField passwordField;
+    public Button signInButton;
+    public Button cancelButton;
+    public Label errorLabel;
 
     @Override
-    public  void buildScene() {
+    public void buildScene() {
         super.buildScene();
-
-        Scene scene = this.menu.getGraphic().getScene();
-        scene.setUserAgentStylesheet("Controller/menu/Graphics/StyleSheets/SignInMenu.css");
-
-        try {
-            Media music = new Media(Paths.get("src/resources/music/music_codex.m4a").toUri().toString());
-            mediaPlayer = new MediaPlayer(music);
-            mediaPlayer.setCycleCount(-1);
-            mediaPlayer.setAutoPlay(true);
-            MediaView mediaView = new MediaView(mediaPlayer);
-            frame.getChildren().add(mediaView);
-        }catch (Exception ignored){
-            System.err.println("couldn't load the music file");
-        }
-
-
-        signInButton.setOnAction(e -> signInButtonClicked());
-        signUpButton.setOnAction(e -> signUpButtonClicked());
-        showLeaderBoard.setOnAction(e -> ((SignInMenu)menu).showLeaderBoard());
-
-                        //todo
-                        usernameInput.setText("warlord");
-                        passwordField.setText("1");
-
-        Rectangle2D bounds=this.menu.getGraphic().getBounds();
-        scene.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.ENTER){
-                if (nameInput == null)
-                    signInButtonClicked();
-                else
-                    signUpButtonClicked();
+        userNameField.setText("uzumaki");
+        passwordField.setText("1");
+        signInButton.setOnMousePressed(event -> {
+            System.err.println("hey");
+            try {
+                if(userNameField.getText().isEmpty()){
+                    error("Please enter your username.");
+                }
+                else if(passwordField.getText().isEmpty()){
+                    error("Please enter your password.");
+                }
+                else {
+                    SignInMenu.getMenu().logIn(userNameField.getText(), passwordField.getText());
+                }
+            } catch (InvalidAccountException e) {
+                error("Sorry! This account doesn't exist.");
+            } catch (WrongPassException e) {
+                error("Wrong Password!");
             }
         });
-
-        GraphicsControls.setButtonStyle( "button1",signInButton);
-        GraphicsControls.setButtonStyle( "button2",signUpButton);
-        GraphicsControls.setButtonStyle("menu-button" , showLeaderBoard);
-
-        signInButton.setOnAction(e -> signInButtonClicked());
-        signUpButton.setOnAction(e -> signUpButtonClicked());
-
-        pane.setMinHeight(bounds.getHeight());
-        pane.setMinWidth(bounds.getWidth());
+        cancelButton.setOnMousePressed(event -> {
+            userNameField.clear();
+            passwordField.clear();
+        });
     }
 
-    private void signUpButtonClicked() {
-        if (nameInput == null) {
-            nameInput = new TextField();
-            nameInput.setPromptText("Name");
-            nameInput.setMinHeight(usernameInput.getHeight());
-            nameInput.setFont(new Font("Songti SC Bold", 27));
-            frame.getChildren().add(0, nameInput);
-        }
-        else {
-            if (usernameInput.getText() != null && !usernameInput.getText().isEmpty()) {
-                if (passwordField.getText() != null && !passwordField.getText().isEmpty()) {
-                    if (nameInput.getText() != null && !nameInput.getText().isEmpty()) {
-
-                        try {
-                            ((SignInMenu)menu).creatAccount(nameInput.getText(), usernameInput.getText(), passwordField.getText());
-                        } catch (AccountAlreadyExistsException e) {
-                            usernameInput.setText("");
-                            usernameInput.setPromptText("this username already exists !");
-                        } catch (WrongPassException | InvalidAccountException e) {
-                            e.printStackTrace();
-                        }
-
-                    } else nameInput.getStyleClass().add("wrong-text-field");
-                } else passwordField.getStyleClass().add("wrong-text-field");
-            } else usernameInput.getStyleClass().add("wrong-text-field");
-        }
-    }
-
-    private void signInButtonClicked() {
-        if (usernameInput.getText()!=null && !usernameInput.getText().isEmpty()){
-            if (passwordField.getText()!=null && !passwordField.getText().isEmpty()){
-                try {
-                    ((SignInMenu)menu).logIn(usernameInput.getText() , passwordField.getText());
-                }catch(InvalidAccountException e1){
-                    usernameInput.setText("");
-                    passwordField.setText("");
-                    usernameInput.setPromptText("incorrect username");
-                }catch (WrongPassException e2){
-                    passwordField.setText("");
-                    passwordField.setPromptText("wrong password");
-                }
-            } else passwordField.getStyleClass().add("wrong-text-field");
-        } else usernameInput.getStyleClass().add("wrong-text-field");
-
-    }
-
-    public void setUsernameInput(String username){
-        this.usernameInput.setText(username);
-    }
-
-    public void playMusic(boolean f){
-        if (f){
-            try{
-                mediaPlayer.play();
-            }catch(Exception ignored){}
-        } else {
-            try{
-                mediaPlayer.pause();
-            }catch(Exception ignored){}
-        }
+    private void error(String error){
+        errorLabel.setText(error);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2), errorLabel);
+        fadeTransition.play();
+        fadeTransition.setOnFinished(event -> errorLabel.setText(null));
     }
 }

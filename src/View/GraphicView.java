@@ -1,18 +1,14 @@
 package View;
 
-//import SignInMenu;
+
 import Controller.Global;
 import Controller.menu.*;
-import Controller.menu.Battle;
-import Controller.menu.MainMenu;
-import Controller.menu.SignInMenu;
 import Model.account.player.CGI;
 import Model.account.player.GGI;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCombination;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class GraphicView extends Application implements View{
@@ -49,13 +45,14 @@ public class GraphicView extends Application implements View{
 
     private void configStage(Stage primaryStage) {
         stage = primaryStage;
-        primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+        primaryScreenBounds = new Rectangle2D(10,10,800,600);
         stage.setFullScreen(false); //TODO make it true in the end !
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setResizable(false);
         stage.setFullScreenExitHint("");
         stage.setOnHiding(event -> System.exit(0));
     }
+
     private static void initializeGraphicMenu() {
         setRootPaths();
         initGraphics();
@@ -66,24 +63,18 @@ public class GraphicView extends Application implements View{
     }
 
     private static void initGraphics() {
-        //initializing graphics for each menu
         SignInMenu.getMenu().getGraphic().init();
-        MainMenu.getMenu().getGraphic().init();
-        GameModeMenu.getMenu().getGraphic().init();
-        ChooseBattleModeMenu.getMenu().getGraphic().init() ;
-        MultiPlayerModeMenu.getMenu().getGraphic().init();
-        Battle.getMenu().getGraphic().init();
+        ChooseBattleModeMenu.getMenu().getGraphic().init();
+        NormalModeMenu.getMenu().getGraphic().init();
+        FourSetModeMenu.getMenu().getGraphic().init();
     }
 
 
     private static void setRootPaths() {
-        //setting root Path for each menu
         SignInMenu.getMenu().getGraphic().setRootPath("Controller/menu/Graphics/FXMLs/SignInMenu.fxml");
-        MainMenu.getMenu().getGraphic().setRootPath("Controller/menu/Graphics/FXMLs/MainMenu.fxml");
-        GameModeMenu.getMenu().getGraphic().setRootPath("Controller/menu/Graphics/FXMLs/GameModeMenu.fxml");
-        MultiPlayerModeMenu.getMenu().getGraphic().setRootPath("Controller/menu/Graphics/FXMLs/MultiPlayerModeMenu.fxml");
         ChooseBattleModeMenu.getMenu().getGraphic().setRootPath("Controller/menu/Graphics/FXMLs/ChooseBattleModeMenu.fxml");
-        Battle.getMenu().getGraphic().setRootPath("Controller/menu/Graphics/FXMLs/Battle.fxml");
+        NormalModeMenu.getMenu().getGraphic().setRootPath("Controller/menu/Graphics/FXMLs/NormalModeMenu.fxml");
+        FourSetModeMenu.getMenu().getGraphic().setRootPath("Controller/menu/Graphics/FXMLs/FourSetModeMenu.fxml");
     }
 
     public void play(String...args) {

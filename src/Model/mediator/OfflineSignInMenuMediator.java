@@ -11,7 +11,7 @@ public class OfflineSignInMenuMediator implements SignInMenuMediator {
 
     @Override
     public void logIn(String username, String password) throws InvalidAccountException, WrongPassException {
-        System.err.println("debug");
+
         Account account = Account.getAccount(username);
         if (account.getPassword().equals(password)) {
             Global.setFirstAccount(account);

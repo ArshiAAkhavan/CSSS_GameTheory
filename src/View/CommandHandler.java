@@ -41,9 +41,9 @@ public class CommandHandler {
     }
 
     private void NormalModeMenuCommandHandler(String[] word) {
-        System.err.println("debug");
+
         NormalModeMenu menu= (NormalModeMenu) MenuHandler.getCurrentMenu();
-        if(word[0].equals("set") && word[1].equals("moves")){
+        if(word[0].equals("set")){
             menu.setProbability(Integer.parseInt(word[2]));
         }else if(word[0].equals("end") && word[1].equals("turn")){
             menu.endTurn();
@@ -90,10 +90,10 @@ public class CommandHandler {
     }
     private static void MultiPlayerMenuCommandHandler(String[] word) {
         MultiPlayerModeMenu menu= (MultiPlayerModeMenu) MenuHandler.getCurrentMenu();
-        System.err.println("debug");
+
         if(word[0].equals("select") && word[1].equals("user")){
             try {
-                System.err.println("debug");
+
                 menu.selectUser(word[2],word[3]);
             } catch (InvalidAccountException e) {
                 System.out.println("this account doesnt exist");

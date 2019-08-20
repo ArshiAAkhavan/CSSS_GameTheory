@@ -1,6 +1,5 @@
 package Controller.menu.Graphics;
 
-import Controller.menu.Graphics.FXMLController.SearchBarHaving;
 import View.MenuHandler;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;

@@ -35,7 +35,7 @@ public class ChooseBattleModeMenu extends Menu {
                 System.out.println("please Enter a Number between 1 and 2");
         }
         try {
-            System.err.println("debug");
+
             MultiPlayerModeMenu.getMenu().selectUser("chert","chert");
         } catch (InvalidAccountException | WrongPassException ignored) {
         }
