@@ -29,4 +29,9 @@ public class FourSetModeMenu extends Menu implements Playable {
     public int[][] play() {
         return new int[0][];
     }
+
+    @Override
+    public int getTurn() {
+        return 0;
+    }
 }

@@ -31,21 +31,7 @@ public class CommandHandler {
             }else if(MenuHandler.getCurrentMenu() instanceof MultiPlayerModeMenu){
                 MultiPlayerMenuCommandHandler(word);
             }else if(MenuHandler.getCurrentMenu() instanceof NormalModeMenu){
-                NormalModeMenu menu= (NormalModeMenu) MenuHandler.getCurrentMenu();
-                if(word[0].equals("set") && word[1].equals("moves")){
-                    menu.setProbability(Integer.parseInt(word[2]));
-                }else if(word[0].equals("end") && word[1].equals("turn")){
-                    menu.endTurn();
-                }else if(word[0].equals("play")){
-                    int[][] results = menu.play();
-                    for(int i=0;i<2;i++){
-                        for(int j=0;j<2;j++){
-                            System.out.print(results[i][j]+" ");
-                        }
-                        System.out.println();
-                    }
-                    System.out.println();
-                }
+                NormalModeMenuCommandHandler(word);
             }
         }
         catch (Exception e){
@@ -54,6 +40,24 @@ public class CommandHandler {
         }
     }
 
+    private void NormalModeMenuCommandHandler(String[] word) {
+        System.err.println("debug");
+        NormalModeMenu menu= (NormalModeMenu) MenuHandler.getCurrentMenu();
+        if(word[0].equals("set") && word[1].equals("moves")){
+            menu.setProbability(Integer.parseInt(word[2]));
+        }else if(word[0].equals("end") && word[1].equals("turn")){
+            menu.endTurn();
+        }else if(word[0].equals("play")){
+            int[][] results = menu.play();
+            for(int i=0;i<2;i++){
+                for(int j=0;j<2;j++){
+                    System.out.print(results[i][j]+" ");
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
+    }
     private static boolean commonCommandHandler(String[] word) {
         /*common commands*/
         if(word[0].equals("help")){
@@ -84,8 +88,6 @@ public class CommandHandler {
         }
         return false;
     }
-
-
     private static void MultiPlayerMenuCommandHandler(String[] word) {
         MultiPlayerModeMenu menu= (MultiPlayerModeMenu) MenuHandler.getCurrentMenu();
         System.err.println("debug");

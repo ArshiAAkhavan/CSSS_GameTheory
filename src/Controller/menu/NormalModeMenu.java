@@ -4,6 +4,8 @@ import Controller.Global;
 import Model.Table.Cell;
 import Model.Table.Game;
 import Model.account.player.Player;
+import Model.mediator.NormalModeMediator;
+import Model.mediator.OnlineNormalModeMediator;
 
 import java.util.ArrayList;
 
@@ -17,6 +19,7 @@ public class NormalModeMenu extends Menu implements Playable {
         return menu;
     }
 
+    private NormalModeMediator mediator;
 
     private static final int ROUNDS = 1000;
 
@@ -46,17 +49,20 @@ public class NormalModeMenu extends Menu implements Playable {
 
     @Override
     public void setProbability(int... probability){
+        this.mediator.setProbability(probability);
         this.move[turn]=probability[0]%100;
     }
 
     @Override
     public void endTurn(){
+        this.mediator.endTurn();
         turn=(turn+1)%2;
     }
 
     @Override
     public int[][] play(){
-        if(turn==1) return null;
+        this.mediator.play();
+        if(turn==1) endTurn();
 
         /*
         * initializing the game
@@ -102,4 +108,12 @@ public class NormalModeMenu extends Menu implements Playable {
 
     }
 
+    public void setMediator(NormalModeMediator mediator) {
+        this.mediator=mediator;
+    }
+
+    @Override
+    public int getTurn() {
+        return turn;
+    }
 }

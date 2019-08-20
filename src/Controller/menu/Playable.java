@@ -8,5 +8,6 @@ public interface Playable {
     void setProbability(int... probability);
     void endTurn();
     int[][] play();
+    int getTurn();
 
 }

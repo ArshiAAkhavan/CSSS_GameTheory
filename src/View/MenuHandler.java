@@ -23,7 +23,7 @@ public class MenuHandler {
     private static String host ;
     private static int main_port , battle_port , chat_port ;
 
-    private static Playable gameMode;
+    private static Playable gameMode=NormalModeMenu.getMenu();
 
     public static void main(String[] args) throws IOException {
 
@@ -56,6 +56,7 @@ public class MenuHandler {
         SignInMenu.getMenu().setSignInMenuMediator(new OnlineSignInMenuMediator());
         MultiPlayerModeMenu.getMenu().setMediator(new OnlineMultiPlayerMenuMediator());
         Battle.getMenu().setMediator(new OnlineBattleMediator());
+        NormalModeMenu.getMenu().setMediator(new OnlineNormalModeMediator());
 
 
     }
@@ -83,7 +84,7 @@ public class MenuHandler {
         MenuHandler.currentMenu.showMenu();
     }
     public static void nextMove() {
-        Global.getAccount(Battle.getMenu().getTurn()).getPlayer().getGI().intervene();
+        Global.getAccount((MenuHandler.gameMode).getTurn()).getPlayer().getGI().intervene();
         try {
             currentMenu.getGraphic().getController().updateScene();
         }catch (Exception ignored){}
