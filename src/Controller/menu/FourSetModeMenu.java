@@ -15,4 +15,18 @@ public class FourSetModeMenu extends Menu implements Playable {
         super(name);
     }
 
+    @Override
+    public void setProbability(int... probability) {
+
+    }
+
+    @Override
+    public void endTurn() {
+
+    }
+
+    @Override
+    public int[][] play() {
+        return new int[0][];
+    }
 }
