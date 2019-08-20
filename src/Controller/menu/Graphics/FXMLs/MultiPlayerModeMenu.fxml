@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.menu.Graphics.FXMLController.MultiPlayerModeMenuFXMLC">
+   <children>
+      <Button fx:id="backButton" alignment="CENTER" layoutX="4.0" layoutY="6.0" mnemonicParsing="false" prefHeight="95.0" prefWidth="106.0" styleClass="back-button" stylesheets="@../StyleSheets/Buttons.css" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Songti SC Bold" size="43.0" />
+         </font>
+      </Button>
+      <VBox alignment="CENTER" layoutX="43.0" layoutY="171.0" prefHeight="491.0" prefWidth="342.0" spacing="100.0" AnchorPane.bottomAnchor="138.0" AnchorPane.leftAnchor="43.0">
+         <children>
+            <Button fx:id="play" mnemonicParsing="false" prefHeight="88.0" prefWidth="235.0" stylesheets="@../StyleSheets/Buttons.css" text="PLAY" textFill="#00ff09">
+               <font>
+                  <Font name="Verdana Bold" size="43.0" />
+               </font>
+            </Button>
+            <Button fx:id="setDeck" mnemonicParsing="false" prefHeight="88.0" prefWidth="241.0" stylesheets="@../StyleSheets/Buttons.css" text="Set Main Deck">
+               <font>
+                  <Font name="Verdana Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <VBox layoutX="396.0" layoutY="13.0" prefHeight="779.0" prefWidth="866.0" spacing="3.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="18.0">
+         <children>
+            <ScrollPane fx:id="scrollPane" prefHeight="626.0" prefWidth="866.0" stylesheets="@../StyleSheets/MultiPlayerMenu.css" />
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <TextField fx:id="textBox" prefHeight="96.0" prefWidth="867.0" promptText="type here ...">
+                     <font>
+                        <Font name="Verdana" size="28.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
