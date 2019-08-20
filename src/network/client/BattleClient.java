@@ -41,6 +41,14 @@ public class BattleClient extends Client{
             this.write(message);
         }
 
+        /*
+        * this message contains the battle servers port
+        * */
+        message=this.read();
+        int port= (int) message.getCarry().get(0);
+        Socket socket=new Socket(HOST,port);
+        this.updateSocket(socket);
+
 
         /*
         * this message carry an  account
@@ -67,5 +75,6 @@ public class BattleClient extends Client{
             e.printStackTrace();
         }
     }
+
 
 }

@@ -3,6 +3,7 @@ package Controller.menu;
 import Controller.Global;
 import Model.Table.Cell;
 import Model.Table.Game;
+import Model.account.Account;
 import Model.account.player.Player;
 import Model.mediator.NormalModeMediator;
 import Model.mediator.OnlineNormalModeMediator;
@@ -28,6 +29,7 @@ public class NormalModeMenu extends Menu implements Playable {
     private int[]move;
     private int[][] table={{2,1},{0,-1}};
     private Player[] player;
+
 
 
     private NormalModeMenu(String name) {
