@@ -1,6 +1,7 @@
 package Controller.menu;
 
 import Controller.Global;
+import Controller.menu.Graphics.FXMLController.FourSetModeMenuFXMLC;
 import Model.Table.Cell;
 import Model.Table.Game;
 import Model.account.player.Player;
@@ -26,7 +27,6 @@ public class FourSetModeMenu extends Menu implements Playable {
     private static final int MAX_SETS = 4;
     private static final int MAX_ROUNDS=6;// 4 set of 6 rounded game :D
     private int round;
-
     private PlayableMediator mediator;
 
     private Game game;
@@ -58,18 +58,25 @@ public class FourSetModeMenu extends Menu implements Playable {
     }
 
     @Override
-    public void endTurn(){
+    public void endTurn() {
         this.mediator.endTurn();
-        turn=(turn+1)%2;
-        this.account=this.player[this.turn].getUser();
-        this.getGraphic().getController().updateScene();
+        turn = (turn + 1) % 2;
+        this.account = this.player[this.turn].getUser();
+        try {
+            this.getGraphic().getController().updateScene();
+        }catch (Exception e){
+            System.err.println("graphic error ------------------------------");
+            e.printStackTrace();
+        }
     }
-
     @Override
     public float[][] play(){
         this.mediator.play();
         if(turn==0) {
             endTurn();
+            return null;
+        }
+        if(this.round>=MAX_ROUNDS){
             return null;
         }
 
@@ -107,6 +114,7 @@ public class FourSetModeMenu extends Menu implements Playable {
             System.err.println("graphic error___________________________________");
             ignored.printStackTrace();
         }
+        ((FourSetModeMenuFXMLC)(this.getGraphic().getController())).showResults(retVal);
         return retVal;
     }
 
@@ -144,5 +152,9 @@ public class FourSetModeMenu extends Menu implements Playable {
 
     public Player getPlayer(int i) {
         return player[i%2];
+    }
+
+    public int getRound() {
+        return round;
     }
 }

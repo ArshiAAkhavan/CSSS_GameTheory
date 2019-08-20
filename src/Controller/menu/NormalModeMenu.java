@@ -1,6 +1,7 @@
 package Controller.menu;
 
 import Controller.Global;
+import Controller.menu.Graphics.FXMLController.NormalModeMenuFXMLC;
 import Model.Table.Cell;
 import Model.Table.Game;
 import Model.account.player.Player;
@@ -104,14 +105,15 @@ public class NormalModeMenu extends Menu implements Playable {
             System.err.println("graphic error___________________________________");
             ignored.printStackTrace();
         }
+        ((NormalModeMenuFXMLC)(this.getGraphic().getController())).showResults(retVal);
         return retVal;
     }
 
     private void setScore(float[][] retVal) {
         for(int i=0;i<2;i++){
             for(int j=0;j<2;j++){
-                this.player[0].addScore((int) (retVal[i][j]*table[i][j])*100);
-                this.player[1].addScore((int) (-retVal[i][j]*table[i][j])*100);
+                this.player[0].addScore((int) (retVal[i][j]*100)*table[i][j]);
+                this.player[1].addScore((int) (-retVal[i][j]*100)*table[i][j]);
             }
         }
     }

@@ -34,8 +34,8 @@ public class MenuHandler {
         initMenus();
 
 
-        View input = new ConsoleView();
-//        View input = new GraphicView();
+//        View input = new ConsoleView();
+        View input = new GraphicView();
 
         input.play(args);
     }
