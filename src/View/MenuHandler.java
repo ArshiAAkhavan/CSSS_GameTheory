@@ -84,6 +84,7 @@ public class MenuHandler {
         MenuHandler.currentMenu.showMenu();
     }
     public static void nextMove() {
+        System.err.println("debug");
         Global.getAccount((MenuHandler.gameMode).getTurn()).getPlayer().getGI().intervene();
         try {
             currentMenu.getGraphic().getController().updateScene();

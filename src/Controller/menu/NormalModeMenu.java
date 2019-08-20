@@ -40,11 +40,13 @@ public class NormalModeMenu extends Menu implements Playable {
         move=new int[2];
 
         player=new Player[2];
+        System.err.println("debug");
         setPlayer(Global.getAccount(0).getPlayer(), Global.getAccount(1).getPlayer());
+
+        boolean isOk=super.init(parentMenu);
+
         this.setAccount(Global.getAccount(0));
-
-
-        return super.init(parentMenu);
+        return isOk;
     }
 
     @Override
@@ -102,9 +104,12 @@ public class NormalModeMenu extends Menu implements Playable {
     }
 
 
-    private void setPlayer(Player player1, Player player2) {
-        this.player[0]=player1;
-        this.player[1]=player2;
+    private void setPlayer(Player firstPlayer, Player secondPlayer) {
+        Global.setGI(firstPlayer);
+        Global.setGI(secondPlayer);
+
+        this.player[0]=firstPlayer;
+        this.player[1]=secondPlayer;
 
     }
 

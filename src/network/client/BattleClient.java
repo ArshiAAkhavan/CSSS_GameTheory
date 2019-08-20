@@ -41,21 +41,23 @@ public class BattleClient extends Client{
             this.write(message);
         }
 
-
+        System.err.println("debug");
         /*
         * this message carry an  account
         * */
         message=this.read();
+        System.err.println("debug");
         Account account= (Account) message.getCarry().get(0);
         int turn= (int) message.getCarry().get(1);
         account.setPlayer(new OnlinePlayer(account,2,2,this.getInput()));
+        System.err.println("debug");
         if(turn==1){
             Global.setSecondAccount(Global.getAccount(0));
             Global.setFirstAccount(account);
         }else{
             Global.setSecondAccount(account);
         }
-        Battle.getMenu().setMediator(new OnlineBattleMediator());
+//        Battle.getMenu().setMediator(new OnlineBattleMediator());
     }
     public void close(){
         try {

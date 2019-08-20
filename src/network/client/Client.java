@@ -76,15 +76,18 @@ public class Client {
         }
     }
     public Message read() {
+        System.err.println("debug");
         YaGson json = new YaGson();
         try {
             StringBuilder readable=new StringBuilder();
+            int i=0;
             while(true){
+                System.err.println(i++);
                 String s=this.getInput().nextLine();
                 if(s.equals(END_MESSAGE))break;
                 readable.append(s);
             }
-
+            System.err.println("debug");
             return json.fromJson(readable.toString(), Message.class);
         } catch (IOException e) {
             e.printStackTrace();

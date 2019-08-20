@@ -14,8 +14,10 @@ public class ConsoleView implements View{
         setGIs();
         MenuHandler.startMenus();
         while(true){
-            MenuHandler.showMenu();
+            System.err.println("give me");
+ //           MenuHandler.showMenu();
             MenuHandler.nextMove();
+            System.err.println("debug");
         }
 
     }

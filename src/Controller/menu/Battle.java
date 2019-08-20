@@ -116,8 +116,7 @@ public class Battle extends Menu {
     }
     private void setPlayer(Player firstPlayer, Player secondPlayer) {
 
-        Global.setGI(firstPlayer);
-        Global.setGI(secondPlayer);
+
 
 
         this.player[0] = firstPlayer;
