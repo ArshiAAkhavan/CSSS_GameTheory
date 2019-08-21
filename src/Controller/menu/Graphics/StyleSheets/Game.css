@@ -1,0 +1,192 @@
+* {
+      -fx-color-background: rgba(8, 22, 47, 1);
+      -fx-color-signIn-text: white;
+      -fx-color-signIn-textField: -fx-color-background;
+      -fx-color-signIn-textField-border: red;
+      -fx-color-signIn-textField-text: red;
+      -fx-color-signInButton: -fx-color-background;
+      -fx-color-signInButton-border: white;
+      -fx-color-mode: red;
+      -fx-color-mode-text: white;
+      -fx-color-mode-border: white;
+      -fx-color-modeLabel: white;
+      -fx-color-payoff: -fx-color-background;
+      -fx-color-payoff-hover: rgba(255, 0, 0, 1);
+      -fx-color-payoff-border: -fx-color-payoff-hover;
+      -fx-color-payoff-text: -fx-color-payoff-hover;
+      -fx-color-team: -fx-color-background;
+      -fx-color-team-text: rgba(255, 255, 255,1);
+      -fx-color-team-border: rgba(255, 255, 255,1);
+      -fx-color-teamTurn-border: red;
+      -fx-color-score: rgba(255, 255, 255, 1);
+      -fx-color-score-text: -fx-color-background;
+      -fx-color-playButton: -fx-color-background;
+      -fx-color-playButton-border: rgba(255, 0, 0, 1);
+      -fx-color-chooseButton: -fx-color-background;
+      -fx-color-chooseButton-border: -fx-color-moves;
+      -fx-color-moves:rgba(166, 189, 227, 1);
+      -fx-color-groups: red;
+      -fx-color-groups-text: white;
+      -fx-color-groupsSelected: rgba(255, 0, 0, .5);
+      -fx-color-groupsSelected-text: rgba(255, 255, 255, .5);
+      -fx-color-mainGroup: white;
+      -fx-color-mainGroup-text: -fx-color-background;
+      -fx-color-mainGroup-border: red;
+}
+.backGround{
+  -fx-background-color: -fx-color-background;
+  -fx-background-size: 100% 100%;
+}
+.buttonny{
+  -fx-background-radius: 15px;
+  -fx-border-radius: 12px;
+  -fx-border-width: 5px;
+  -fx-pref-width: 120px;
+  -fx-pref-height: 50px;
+  -fx-font-weight: bold;
+  -fx-font-size: 18;
+}
+.labell{
+  -fx-alignment:center;
+  -fx-text-alignment:center;
+}
+.textField{
+  -fx-alignment:center;
+  -fx-text-alignment:center;
+  -fx-font-size: 20;
+  -fx-pref-height: 50;
+  -fx-pref-width: 100;
+}
+.signInBg{
+
+}
+.signInTextField{
+    -fx-max-width: 300;
+    -fx-max-height: 70;
+    -fx-background-color: -fx-color-signIn-textField;
+    -fx-background-radius: 20%;
+    -fx-border-width: 6;
+    -fx-border-radius: 5%;
+    -fx-border-color: -fx-color-signIn-textField-border;
+    -fx-text-fill: -fx-color-signIn-textField-text;
+}
+.signIn{
+  -fx-font-size: 20;
+  -fx-text-fill: -fx-color-signIn-text;
+}
+.signInButton{
+  -fx-background-color: -fx-color-signInButton;
+  -fx-border-color: -fx-color-signInButton-border;
+  -fx-text-fill: -fx-color-signInButton-border;
+}
+.signInButton:hover{
+  -fx-background-color: -fx-color-signInButton-border;
+  -fx-text-fill:  -fx-color-signInButton;
+}
+.errorLabel{
+  -fx-text-fill: red;
+}
+.mode{
+  -fx-font-size: 30;
+  -fx-text-fill: -fx-color-mode-text;
+  -fx-background-color: -fx-color-mode;
+  -fx-background-radius: 100%;
+  -fx-border-width: 8px;
+  -fx-border-color: -fx-color-mode-border;
+  -fx-border-radius: 100%;
+}
+.mode:hover{
+  -fx-text-fill: -fx-color-mode;
+  -fx-background-color: -fx-color-mode-border;
+  -fx-border-color: -fx-color-mode-border;
+}
+.modeLabel{
+    -fx-text-fill: -fx-color-modeLabel;
+    -fx-font-size: 20;
+}
+.payoff{
+  -fx-border-width: 4px;
+  -fx-border-color: -fx-color-payoff-border;
+  -fx-border-radius: 20%;
+  -fx-background-radius: 20%;
+  -fx-font-size: 30;
+  -fx-text-fill: -fx-color-payoff-text;
+  -fx-background-color: -fx-color-payoff;
+}
+.payoff:hover{
+  -fx-text-fill: -fx-color-payoff;
+  -fx-background-color: -fx-color-payoff-hover;
+}
+.scoreBoard{
+  -fx-background-size: 100% 100%;
+  -fx-background-radius: 100%;
+  -fx-border-radius: 100%;
+  -fx-font-size: 20;
+}
+.team{
+  -fx-border-width: 6px;
+  -fx-border-color: -fx-color-team-border;
+  -fx-background-color: -fx-color-team;
+  -fx-text-fill: -fx-color-team-text;
+}
+.team:hover{
+  -fx-background-color: -fx-color-team-border;
+  -fx-text-fill: -fx-color-team;
+}
+.teamTurn{
+  -fx-border-width: 6px;
+  -fx-background-color: -fx-color-team;
+  -fx-text-fill: -fx-color-team-text;
+  -fx-border-color: -fx-color-teamTurn-border;
+}
+.teamTurn:hover{
+  -fx-background-color: -fx-color-teamTurn-border;
+  -fx-text-fill: -fx-color-team;
+}
+.score{
+  -fx-background-color: -fx-color-score;
+  -fx-text-fill: -fx-color-score-text;
+}
+.playButton{
+  -fx-background-color: -fx-color-playButton;
+  -fx-border-color: -fx-color-playButton-border;
+  -fx-text-fill: -fx-color-playButton-border;
+}
+.playButton:hover{
+  -fx-background-color: -fx-color-playButton-border;
+  -fx-text-fill: -fx-color-playButton;
+}
+.chooseButton{
+  -fx-background-color: -fx-color-chooseButton;
+  -fx-border-color: -fx-color-chooseButton-border;
+  -fx-text-fill: -fx-color-chooseButton-border;
+}
+.chooseButton:hover{
+  -fx-background-color: -fx-color-chooseButton-border;
+  -fx-border-color: -fx-color-chooseButton;
+  -fx-text-fill: -fx-color-chooseButton;
+}
+.moves{
+  -fx-font-size: 15;
+  -fx-background-color: -fx-color-moves;
+  -fx-background-radius: 5px;
+}
+.groups{
+  -fx-background-color: -fx-color-groups;
+  -fx-background-radius: 10px;
+  -fx-font-size: 20;
+  -fx-text-fill: -fx-color-groups-text;
+}
+.groupsSelected{
+  -fx-background-color: -fx-color-groupsSelected;
+  -fx-text-fill: -fx-color-groupsSelected-text;
+}
+.mainGroup{
+  -fx-border-width: 10px;
+  -fx-border-color: -fx-color-mainGroup-border;
+  -fx-border-radius: 60px;
+  -fx-background-color: -fx-color-mainGroup;
+  -fx-background-radius: 70px;
+  -fx-font-size: 20;
+  -fx-text-fill: -fx-color-mainGroup-text;
+}
