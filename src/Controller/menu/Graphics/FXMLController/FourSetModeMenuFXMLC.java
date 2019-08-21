@@ -2,7 +2,6 @@ package Controller.menu.Graphics.FXMLController;
 
 import Controller.Global;
 import Controller.menu.FourSetModeMenu;
-import Controller.menu.NormalModeMenu;
 import Controller.menu.Playable;
 import Model.account.player.OnlinePlayer;
 import javafx.application.Platform;
@@ -53,7 +52,9 @@ public class FourSetModeMenuFXMLC extends FXMLController {
         setScore();
 
         playButton.setOnMousePressed(event -> {
-            if(!(FourSetModeMenu.getMenu().getPlayer(NormalModeMenu.getMenu().getTurn()) instanceof OnlinePlayer)){
+            if(!(FourSetModeMenu.getMenu().getPlayer(FourSetModeMenu.getMenu().getTurn()) instanceof OnlinePlayer)){
+                System.out.println("fuckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+
                 setProbability(FourSetModeMenu.getMenu().getRound());
                 FourSetModeMenu.getMenu().play();
             }
@@ -66,11 +67,13 @@ public class FourSetModeMenuFXMLC extends FXMLController {
                 if(FourSetModeMenu.getMenu().getTurn()%2 == 0) {
                     GridPane gridPane = (GridPane) firstProb.getChildren().get(FourSetModeMenu.getMenu().getRound());
                     Label label = (Label) gridPane.getChildren().get(--j);
+                    j%=6;
                     label.setText("");
                 }
                 else {
                     GridPane gridPane = (GridPane) secondProb.getChildren().get(FourSetModeMenu.getMenu().getRound());
                     Label label = (Label) gridPane.getChildren().get(--j);
+                    j%=6;
                     label.setText("");
                 }
             }
@@ -169,7 +172,8 @@ public class FourSetModeMenuFXMLC extends FXMLController {
             }
             int i = FourSetModeMenu.getMenu().getRound();
             GridPane gridPane = (GridPane) box.getChildren().get(i);
-            Label label = (Label) gridPane.getChildren().get(j++);
+            Label label = (Label) gridPane.getChildren().get(j);
+            j=(j+1)%6;
             if (label.getText().isEmpty()) label.setText("F");
 
         });
@@ -185,7 +189,8 @@ public class FourSetModeMenuFXMLC extends FXMLController {
             }
             int i = FourSetModeMenu.getMenu().getRound();
             GridPane gridPane = (GridPane) box.getChildren().get(i);
-            Label label = (Label) gridPane.getChildren().get(j++);
+            Label label = (Label) gridPane.getChildren().get(j);
+            j=(j+1)%6;
             if (label.getText().isEmpty()) label.setText("S");
         });
     }

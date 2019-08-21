@@ -53,6 +53,7 @@ public class CommandHandler {
         }else if(word[0].equals("end") && word[1].equals("turn")){
             menu.endTurn();
         }else if(word[0].equals("play")) {
+            System.err.println("::::::::::::::::::::::::::::::::::::::::::::::::i have recocnized a 'play command' ::::::::::::::::::::::::::::::::::::::::::::::::::");
             try {
                 float[][] results = menu.play();
                 for (int i = 0; i < 2; i++) {

@@ -106,6 +106,7 @@ public class FourSetModeMenu extends Menu implements Playable {
         /*
         * graphics
         * */
+        System.out.println(":::::::::::::::::::::::::::::::::::::::::::: starting the graphics for play::::::::::::::::::::::::::::::::::::::::::::::::");
         try {
             this.getGraphic().getController().updateScene();
             ((FourSetModeMenuFXMLC)(this.getGraphic().getController())).showResults(retVal);
@@ -113,6 +114,18 @@ public class FourSetModeMenu extends Menu implements Playable {
             System.err.println("graphic error___________________________________");
             ignored.printStackTrace();
         }
+        endTurn();
+        /*
+        * and again graphics
+        * */
+
+        try {
+            this.getGraphic().getController().updateScene();
+        }catch (Exception ignored){
+            System.err.println("graphic error___________________________________");
+            ignored.printStackTrace();
+        }
+
         return retVal;
     }
 

@@ -9,14 +9,17 @@ import Model.mediator.OnlineBattleMediator;
 import Model.Primary;
 import Model.account.Account;
 import Model.mediator.*;
+import javafx.application.Application;
+import javafx.stage.Stage;
 import network.client.Client;
 
+import java.applet.Applet;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
 
-public class MenuHandler {
+public class MenuHandler{
 
     private static Menu currentMenu;
     private static Account account;
@@ -34,8 +37,8 @@ public class MenuHandler {
         initMenus();
 
 
-//        View input = new ConsoleView();
-        View input = new GraphicView();
+        View input = new ConsoleView();
+//        View input = new GraphicView();
 
         input.play(args);
     }
@@ -158,4 +161,5 @@ public class MenuHandler {
     public static void setGameMode(Playable gameMode) {
         MenuHandler.gameMode = gameMode;
     }
+
 }
