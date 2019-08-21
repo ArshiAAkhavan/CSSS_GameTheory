@@ -13,6 +13,7 @@ public class FourSetModeMenu extends Menu implements Playable {
 
     private static FourSetModeMenu menu;
 
+
     public static FourSetModeMenu getMenu() {
         if(FourSetModeMenu.menu==null){
             FourSetModeMenu.menu=new FourSetModeMenu("FourSetMode");
@@ -100,21 +101,18 @@ public class FourSetModeMenu extends Menu implements Playable {
         for (Cell result : results) {
             retVal[result.getX()][result.getY()]++;
         }
-        for(int i=0;i<2;i++){
-            for(int j=0;j<2;j++){
-                System.out.println("i,j,value:"+i+" "+j+" "+retVal[i][j]);
-                retVal[i][j]/=(MAX_SETS *1.0f);
-                System.out.println("i,j,value:"+i+" "+j+" "+retVal[i][j]);
-            }
-        }
         this.setScore(retVal);
+
+        /*
+        * graphics
+        * */
         try {
             this.getGraphic().getController().updateScene();
+            ((FourSetModeMenuFXMLC)(this.getGraphic().getController())).showResults(retVal);
         }catch (Exception ignored){
             System.err.println("graphic error___________________________________");
             ignored.printStackTrace();
         }
-        ((FourSetModeMenuFXMLC)(this.getGraphic().getController())).showResults(retVal);
         return retVal;
     }
 

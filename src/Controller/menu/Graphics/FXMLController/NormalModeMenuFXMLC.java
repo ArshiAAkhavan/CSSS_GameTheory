@@ -2,10 +2,12 @@ package Controller.menu.Graphics.FXMLController;
 
 import Controller.Global;
 import Model.account.player.OnlinePlayer;
+import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import Controller.menu.NormalModeMenu;
+import javafx.scene.image.ImageView;
 
 public class NormalModeMenuFXMLC extends FXMLController {
 
@@ -24,6 +26,7 @@ public class NormalModeMenuFXMLC extends FXMLController {
     public Label result2;
     public Label result3;
     public Label result4;
+    public ImageView backButton;
 
     @Override
     public void enterScene() {
@@ -38,8 +41,9 @@ public class NormalModeMenuFXMLC extends FXMLController {
         firstTeam.setText(Global.getAccount(0).getUsername());
         secondTeam.setText(Global.getAccount(1).getUsername());
 
-        firstScore.setText(Integer.toString(Global.getAccount(0).getPlayer().getScore()));
-        secondScore.setText(Integer.toString(Global.getAccount(1).getPlayer().getScore()));
+        setScore();
+
+        backButton.setOnMousePressed(event -> menu.exit());
 
         playButton.setOnMousePressed(event -> {
             if(!(NormalModeMenu.getMenu().getPlayer(NormalModeMenu.getMenu().getTurn()) instanceof OnlinePlayer)){
@@ -54,27 +58,9 @@ public class NormalModeMenuFXMLC extends FXMLController {
         });
     }
 
-    @Override
-    public void updateScene() {
-        super.updateScene();
-
+    private void setScore() {
         firstScore.setText(Integer.toString(Global.getAccount(0).getPlayer().getScore()));
-        System.err.println(Global.getAccount(0).getPlayer().getScore());
         secondScore.setText(Integer.toString(Global.getAccount(1).getPlayer().getScore()));
-        System.err.println(Global.getAccount(1).getPlayer().getScore());
-
-        if(NormalModeMenu.getMenu().getTurn()%2 == 0){
-            firstTeam.getStyleClass().clear();
-            firstTeam.getStyleClass().addAll("labell", "scoreBoard", "teamTurn");
-            secondTeam.getStyleClass().clear();
-            secondTeam.getStyleClass().addAll("labell", "scoreBoard", "team");
-        }
-        else {
-            secondTeam.getStyleClass().clear();
-            secondTeam.getStyleClass().addAll("labell", "scoreBoard", "teamTurn");
-            firstTeam.getStyleClass().clear();
-            firstTeam.getStyleClass().addAll("labell", "scoreBoard", "team");
-        }
     }
 
     public void showResults(float[][] results) {
@@ -93,6 +79,24 @@ public class NormalModeMenuFXMLC extends FXMLController {
                 "-fx-border-width: 4px;\n" +
                 "-fx-border-color: rgba(255, 255, 255, "+a+");\n" +
                 "-fx-border-radius: 20%;");
-        result.setText(Float.toString(number));
+        Platform.runLater(() -> result.setText(Float.toString(number)));
+    }
+
+    @Override
+    public void updateScene() {
+        super.updateScene();
+        Platform.runLater(() -> setScore());
+        if(NormalModeMenu.getMenu().getTurn()%2 == 0){
+            firstTeam.getStyleClass().clear();
+            firstTeam.getStyleClass().addAll("labell", "scoreBoard", "teamTurn");
+            secondTeam.getStyleClass().clear();
+            secondTeam.getStyleClass().addAll("labell", "scoreBoard", "team");
+        }
+        else {
+            secondTeam.getStyleClass().clear();
+            secondTeam.getStyleClass().addAll("labell", "scoreBoard", "teamTurn");
+            firstTeam.getStyleClass().clear();
+            firstTeam.getStyleClass().addAll("labell", "scoreBoard", "team");
+        }
     }
 }

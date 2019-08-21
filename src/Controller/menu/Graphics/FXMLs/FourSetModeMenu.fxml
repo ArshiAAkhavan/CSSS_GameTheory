@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -13,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="backGround" stylesheets="@../StyleSheets/Game.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.menu.Graphics.FXMLController.FourSetModeMenuFXMLC">
    <children>
-      <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefWidth="800.0" spacing="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefWidth="800.0" spacing="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
             <VBox fx:id="firstProb" alignment="CENTER">
                <children>
@@ -270,6 +271,12 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
+                        <Label prefHeight="30.0" prefWidth="25.0">
+                           <styleClass>
+                              <String fx:value="moves" />
+                              <String fx:value="labell" />
+                           </styleClass>
+                        </Label>
                         <Label layoutX="10.0" layoutY="20.0" prefHeight="30.0" prefWidth="25.0" GridPane.columnIndex="1">
                            <styleClass>
                               <String fx:value="moves" />
@@ -459,7 +466,7 @@
             </VBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefWidth="300.0" spacing="20.0" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="250.0">
+      <HBox alignment="CENTER" prefWidth="300.0" spacing="20.0" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="250.0">
          <children>
             <Button fx:id="firstProbButton" mnemonicParsing="false" prefWidth="70.0" text="FIRST">
                <styleClass>
@@ -494,12 +501,22 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="playButton" mnemonicParsing="false" prefWidth="100.0" text="PLAY">
-               <styleClass>
-                  <String fx:value="playButton" />
-                  <String fx:value="buttonny" />
-               </styleClass>
-            </Button>
+            <Pane>
+               <children>
+                  <Button fx:id="clearButton" layoutY="30.0" mnemonicParsing="false" text="CLEAR">
+                     <styleClass>
+                        <String fx:value="buttonny" />
+                        <String fx:value="chooseButton" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="playButton" layoutY="121.0" mnemonicParsing="false" prefWidth="100.0" text="PLAY">
+                     <styleClass>
+                        <String fx:value="playButton" />
+                        <String fx:value="buttonny" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </Pane>
             <Pane>
                <children>
                   <Label fx:id="secondTeam" prefHeight="200.0" prefWidth="200.0">
@@ -520,6 +537,7 @@
             </Pane>
          </children>
       </HBox>
+      <ImageView fx:id="backButton" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="backButton" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <GridPane layoutX="280.0" layoutY="-132.0" prefHeight="250.0" prefWidth="250.0" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="70.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -530,10 +548,10 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label fx:id="result11" prefHeight="150.0" prefWidth="150.0" styleClass="labell" />
-            <Label fx:id="result21" prefHeight="150.0" prefWidth="150.0" styleClass="labell" GridPane.columnIndex="1" />
-            <Label fx:id="result31" prefHeight="150.0" prefWidth="150.0" styleClass="labell" GridPane.rowIndex="1" />
-            <Label fx:id="result41" prefHeight="150.0" prefWidth="150.0" styleClass="labell" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="result1" prefHeight="150.0" prefWidth="150.0" styleClass="labell" />
+            <Label fx:id="result2" prefHeight="150.0" prefWidth="150.0" styleClass="labell" GridPane.columnIndex="1" />
+            <Label fx:id="result3" prefHeight="150.0" prefWidth="150.0" styleClass="labell" GridPane.rowIndex="1" />
+            <Label fx:id="result4" prefHeight="150.0" prefWidth="150.0" styleClass="labell" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -101,6 +102,7 @@
             </Pane>
          </children>
       </HBox>
+      <ImageView fx:id="backButton" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="backButton" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <GridPane layoutX="270.0" layoutY="-142.0" prefHeight="250.0" prefWidth="250.0" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="70.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />

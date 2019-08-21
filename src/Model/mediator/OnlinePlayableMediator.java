@@ -1,26 +1,28 @@
 package Model.mediator;
 
 import Controller.Global;
+import Controller.menu.Menu;
 import Controller.menu.NormalModeMenu;
 import Model.account.player.OnlinePlayer;
+import View.MenuHandler;
 import network.Message;
 
 public class OnlinePlayableMediator implements PlayableMediator {
     @Override
     public void setProbability(int... probability) {
-        if(NormalModeMenu.getMenu().getAccount().getPlayer() instanceof OnlinePlayer) return;
+        if(((Menu)(MenuHandler.getGameMode())).getAccount().getPlayer() instanceof OnlinePlayer) return;
         sendPlayerMove("set probability"+ " "+string(probability));
     }
 
     @Override
     public void endTurn() {
-        if(NormalModeMenu.getMenu().getAccount().getPlayer() instanceof OnlinePlayer) return;
+        if(((Menu)(MenuHandler.getGameMode())).getAccount().getPlayer() instanceof OnlinePlayer) return;
         sendPlayerMove("end turn");
     }
 
     @Override
     public void play() {
-        if(NormalModeMenu.getMenu().getAccount().getPlayer() instanceof OnlinePlayer) return;
+        if(((Menu)(MenuHandler.getGameMode())).getAccount().getPlayer() instanceof OnlinePlayer) return;
         sendPlayerMove("play");
     }
 

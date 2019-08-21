@@ -52,15 +52,17 @@ public class CommandHandler {
             menu.setProbability( temp);
         }else if(word[0].equals("end") && word[1].equals("turn")){
             menu.endTurn();
-        }else if(word[0].equals("play")){
-            float[][] results = menu.play();
-            for(int i=0;i<2;i++){
-                for(int j=0;j<2;j++){
-                    System.out.print(results[i][j]+" ");
+        }else if(word[0].equals("play")) {
+            try {
+                float[][] results = menu.play();
+                for (int i = 0; i < 2; i++) {
+                    for (int j = 0; j < 2; j++) {
+                        System.out.print(results[i][j] + " ");
+                    }
+                    System.out.println();
                 }
                 System.out.println();
-            }
-            System.out.println();
+            }catch (Exception e){}
         }
     }
 

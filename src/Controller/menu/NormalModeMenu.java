@@ -101,11 +101,11 @@ public class NormalModeMenu extends Menu implements Playable {
         this.setScore(retVal);
         try {
             this.getGraphic().getController().updateScene();
+            ((NormalModeMenuFXMLC)(this.getGraphic().getController())).showResults(retVal);
         }catch (Exception ignored){
             System.err.println("graphic error___________________________________");
             ignored.printStackTrace();
         }
-        ((NormalModeMenuFXMLC)(this.getGraphic().getController())).showResults(retVal);
         return retVal;
     }
 
